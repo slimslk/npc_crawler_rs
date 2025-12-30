@@ -1,0 +1,20 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: crawler_rs_java
+  r2dbc:
+    url: r2dbc:postgresql://postgres:password@127.0.0.1:5432/db
+  profiles:
+    active: prod
+
+logging:
+  level:
+    io.r2dbc.pool: DEBUG
+    io.r2dbc.postgresql: DEBUG
+    org.springframework.r2dbc: DEBUG
+
+jwt_token_exp_date: 10
+issuer: issuer
+jwt_key: jwt-secret-key-here
