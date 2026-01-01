@@ -13,7 +13,6 @@ public interface UserMapper {
     @Mapping(target = "createdAt", ignore = true)
     @Mapping(target = "active", ignore = true)
     @Mapping(target = "deleted", ignore = true)
-    @Mapping(target = "charId", ignore = true)
     User toEntity(UserCreateDTO userCreateDTO);
 
     UserResponseDTO toDTO(User user);

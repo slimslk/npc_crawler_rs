@@ -5,7 +5,6 @@ import jakarta.validation.constraints.NotEmpty;
 public record UserResponseDTO(
         Long id,
         @NotEmpty
-        String username,
-        Long charId
+        String username
 ) {
 }

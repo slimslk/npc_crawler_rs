@@ -24,7 +24,5 @@ public class User {
     private boolean active;
     @Column("is_deleted")
     private boolean deleted;
-    @Column("char_id")
-    private Long charId;
 }
 
