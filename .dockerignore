@@ -1,0 +1,32 @@
+# Сборочные артефакты
+target/
+build/
+
+# Локальные IDE файлы
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+
+# Логи
+*.log
+/logs
+
+# Файлы системы и временные
+*.class
+*.jar
+*.war
+*.ear
+*.tmp
+*.swp
+*.DS_Store
+*.bak
+
+# Git
+.git
+.gitignore
+
+# Конфиги локальной разработки
+src/main/resources/application-*.yml
+

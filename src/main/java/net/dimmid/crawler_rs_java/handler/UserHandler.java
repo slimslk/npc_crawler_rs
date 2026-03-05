@@ -4,6 +4,7 @@ import io.netty.handler.codec.http.HttpHeaderNames;
 import lombok.RequiredArgsConstructor;
 import net.dimmid.crawler_rs_java.dto.UserCreateDTO;
 import net.dimmid.crawler_rs_java.dto.UserRequestDTO;
+import net.dimmid.crawler_rs_java.service.CharacterService;
 import net.dimmid.crawler_rs_java.service.UserService;
 import net.dimmid.crawler_rs_java.util.JWTUtil;
 import net.dimmid.crawler_rs_java.util.ValidationUtil;
@@ -18,6 +19,7 @@ import reactor.core.publisher.Mono;
 @RequiredArgsConstructor
 public class UserHandler {
     private final UserService userService;
+    private final CharacterService characterService;
     private final JWTUtil jwtUtil;
     private final ValidationUtil validator;
 
@@ -44,6 +46,19 @@ public class UserHandler {
                         .contentType(MediaType.APPLICATION_JSON)
                         .bodyValue(userResponse));
     }
+
+    public Mono<ServerResponse> getUsersCharacters(ServerRequest request) {
+        String username = request.pathVariable("username");
+        return characterService.getCharacters(username)
+                .collectList()
+                .flatMap(charactersResponse -> ServerResponse.status(HttpStatus.OK)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .bodyValue(charactersResponse)
+                );
+
+    }
+
+
     private String generateToken(String username) {
         return "Bearer " + jwtUtil.generateJWTToken(username);
     }

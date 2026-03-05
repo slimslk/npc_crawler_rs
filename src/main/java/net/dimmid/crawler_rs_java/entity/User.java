@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 
 @NoArgsConstructor
 @Data
-@Table("users")
+@Table(schema = "npc_crawler", name = "users")
 public class User {
     @Id
     private Long id;

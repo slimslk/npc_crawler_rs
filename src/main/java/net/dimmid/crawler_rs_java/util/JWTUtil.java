@@ -37,8 +37,6 @@ public class JWTUtil {
     }
 
     public String generateJWTToken(String username, Map<String, Object> scopes) {
-        System.out.println(this.ISSUER);
-        System.out.println(this.JWT_TOKEN_EXP_DATE);
         return Jwts.builder()
                 .claims(scopes)
                 .subject(username)

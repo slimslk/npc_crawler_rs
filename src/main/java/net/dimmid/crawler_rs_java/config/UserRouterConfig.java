@@ -15,6 +15,7 @@ public class UserRouterConfig {
         return RouterFunctions.route()
                 .POST("/register", handler::createUser)
                 .POST("/login", handler::authenticateUser)
+                .GET("/{username}/characters", handler::getUsersCharacters)
                 .build();
     }
 }
